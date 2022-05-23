@@ -10,7 +10,7 @@ export type Movie = {
 
 const Add = () => {
   const [query, setQuery] = useState<string>("");
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Movie[]>([]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -35,14 +35,16 @@ const Add = () => {
           placeholder={"Search movie"}
           value={query}
           onChange={onChange}
+          autoFocus
         />
       </div>
       {results && results.length > 0 && (
         <ul className={"results-wrapper"}>
-          {results.map((result, i: number) => {
-            console.log(result, "result");
-            return <ResultCard key={i} result={result} />;
-          })}
+          {results
+            .sort((a, b) => b.vote_average - a.vote_average)
+            .map((result: Movie, i: number) => {
+              return <ResultCard key={i} result={result} />;
+            })}
         </ul>
       )}
     </div>

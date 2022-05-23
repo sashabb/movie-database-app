@@ -101,23 +101,39 @@ img {
 /* Action Bar */
 .action-bar {
   border-bottom: 1px solid var(--color);
-  padding: 10px 8px;
+  padding: 12px 8px;
 }
 
 .search-input {
   background-color: transparent;
   color: currentColor;
   border: 1px solid var(--color);
-  width: 100%;
-  max-width: 600px;
+  width: calc(100% - 24px);
   display: block;
-  margin: 0 auto;
-  padding: 5px 12px;
+  padding: 6px 12px;
   border-radius: 25px;
   text-transform: uppercase;
+  font-size: inherit;
 }
 
 /* header */
 header {
   border-bottom: 1px solid var(--color);
+  padding: 18px 8px;
+}
+header ul {
+  display: flex;
+  text-transform: uppercase;
+  justify-content: flex-end;
+}
+header ul li {
+  list-style-type: none;
+}
+
+.add-btn {
+  background-color: var(--color);
+  color: var(--bg);
+  width: fit-content;
+  border-radius: 25px;
+  padding: 0px 5px;
 }
