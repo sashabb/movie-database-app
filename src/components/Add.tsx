@@ -1,5 +1,52 @@
+import { useState } from "react";
+import ResultCard from "./ResultCard";
+
+export type Movie = {
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  release_date: string;
+};
+
 const Add = () => {
-  return <div />;
+  const [query, setQuery] = useState<string>("");
+  const [results, setResults] = useState<any[]>([]);
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setQuery(e.target.value);
+
+    // Fetch request
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-UK&page=1&include_adult=false&query=${e.target.value}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setResults(data.error ? [] : data.results);
+      });
+  };
+
+  return (
+    <div>
+      <div className="action-bar">
+        <input
+          className={"search-input"}
+          type={"text"}
+          placeholder={"Search movie"}
+          value={query}
+          onChange={onChange}
+        />
+      </div>
+      {results && results.length > 0 && (
+        <ul className={"results-wrapper"}>
+          {results.map((result, i: number) => {
+            console.log(result, "result");
+            return <ResultCard key={i} result={result} />;
+          })}
+        </ul>
+      )}
+    </div>
+  );
 };
 
 export default Add;
