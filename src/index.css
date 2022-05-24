@@ -135,6 +135,9 @@ header ul {
 header ul li {
   list-style-type: none;
 }
+header ul li:not(:last-of-type) {
+  margin-right: 25px;
+}
 
 .add-btn {
   background-color: var(--color);
@@ -166,4 +169,9 @@ header ul li {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+}
+
+.watchlist-header {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--color);
 }

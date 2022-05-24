@@ -1,4 +1,3 @@
-import { stat } from "fs";
 import { createContext, useEffect, useReducer } from "react";
 import { Movie } from "../components/Add";
 import AppReducer from "./AppReducer";
@@ -39,7 +38,7 @@ export const GlobalProvider = (props: any) => {
         addToWatchlist,
       }}
     >
-      {props.children}
+      {props?.children}
     </GlobalContext.Provider>
   );
 };

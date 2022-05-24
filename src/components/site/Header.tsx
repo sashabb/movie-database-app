@@ -5,6 +5,9 @@ const Header = () => {
     <header>
       <ul>
         <li>
+          <Link to={"/watchlist"}>Watchlist</Link>
+        </li>
+        <li>
           <Link to={"/watched"}>Watched</Link>
         </li>
         <li className={"add-btn"}>

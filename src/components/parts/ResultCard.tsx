@@ -4,10 +4,10 @@ import { Movie } from "../Add";
 
 const ResultCard = ({ result }: { result: Movie }) => {
   const { addToWatchlist, watchlist } = useContext(GlobalContext);
-  const storedMovie = watchlist.find((o: any) => o.id === result.id);
+  const storedMovie = watchlist.find((o: Movie) => o.id === result.id);
   const watchlistDisabled = storedMovie ? true : false;
   return (
-    <div className={"result-card"}>
+    <li className={"result-card"}>
       <div className={"image-wrapper"}>
         <div className={"aspectholder"}>
           {result?.poster_path && (
@@ -42,7 +42,7 @@ const ResultCard = ({ result }: { result: Movie }) => {
           <p>{result.vote_average}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
