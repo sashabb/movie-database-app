@@ -1,7 +1,8 @@
 import { useState } from "react";
-import ResultCard from "./ResultCard";
+import ResultCard from "./parts/ResultCard";
 
 export type Movie = {
+  id: string;
   title: string;
   poster_path: string;
   vote_average: number;
