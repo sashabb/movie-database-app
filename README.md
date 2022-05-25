@@ -1,6 +1,6 @@
 # Movie Watchlist App (React + Typescript)
 
-Search for movies using 'The Movie Database' API. Save movies to a watchlist / mark as watched.
+Search for movies using 'The Movie Database' API. Save movies to a watchlist / mark as watched. Both 'watchlist' and 'watched' lists are saved to `localStorage`.
 
 ## Getting Started with Create React App
 
