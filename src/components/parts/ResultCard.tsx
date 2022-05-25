@@ -3,9 +3,12 @@ import { GlobalContext } from "../../context/GlobalState";
 import { Movie } from "./Add";
 
 const ResultCard = ({ result }: { result: Movie }) => {
-  const { addToWatchlist, watchlist } = useContext(GlobalContext);
-  const storedMovie = watchlist.find((o: Movie) => o.id === result.id);
-  const watchlistDisabled = storedMovie ? true : false;
+  const { addToWatchlist, addToWatched, watchlist, watched } =
+    useContext(GlobalContext);
+  const storedWatchlistMovie = watchlist.find((o: Movie) => o.id === result.id);
+  const watchlistDisabled = storedWatchlistMovie ? true : false;
+  const storedWatchedMovie = watched.find((o: Movie) => o.id === result.id);
+  const watchedDisabled = storedWatchedMovie ? true : false;
   return (
     <li className={"result-card"}>
       <div className={"image-wrapper"}>
@@ -31,10 +34,18 @@ const ResultCard = ({ result }: { result: Movie }) => {
             <button
               type={"button"}
               disabled={watchlistDisabled}
-              className={"add-to-watchlist"}
+              className={"add-to-list"}
               onClick={() => addToWatchlist(result)}
             >
               + Watchlist
+            </button>
+            <button
+              type={"button"}
+              disabled={watchedDisabled}
+              className={"add-to-list"}
+              onClick={() => addToWatched(result)}
+            >
+              + Watched
             </button>
           </div>
         </div>

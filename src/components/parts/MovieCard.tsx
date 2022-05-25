@@ -1,8 +1,9 @@
 import { Movie } from "./Add";
+import { MovieControls } from "./MovieControls";
 
-const WatchlistCard = ({ movie }: { movie: Movie }) => {
+const MovieCard = ({ movie, type }: { movie: Movie; type: string }) => {
   return (
-    <li className={"watchlist-card"}>
+    <li className={"movie-card"}>
       <div className={"watchlist-image-wrapper"}>
         <div className={"aspectholder"}>
           {movie?.poster_path && (
@@ -20,7 +21,7 @@ const WatchlistCard = ({ movie }: { movie: Movie }) => {
             <h3>{movie.title.toUpperCase()}</h3>
             {movie.release_date && <p>{movie.release_date.substring(0, 4)}</p>}
           </div>
-          <button type="button">Remove</button>
+          <MovieControls type={type} movie={movie} />
         </div>
         <div className={"rating"}>
           <p>{movie.vote_average}</p>
@@ -30,4 +31,4 @@ const WatchlistCard = ({ movie }: { movie: Movie }) => {
   );
 };
 
-export default WatchlistCard;
+export default MovieCard;

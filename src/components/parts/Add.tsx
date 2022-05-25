@@ -39,7 +39,7 @@ const Add = () => {
           autoFocus
         />
       </div>
-      {results && results.length > 0 && (
+      {results && results.length > 0 ? (
         <ul className={"results-wrapper grid"}>
           {results
             .sort((a, b) => b.vote_average - a.vote_average)
@@ -47,6 +47,10 @@ const Add = () => {
               return <ResultCard key={i} result={result} />;
             })}
         </ul>
+      ) : (
+        <div className={"empty"}>
+          <h2>{results ? `No results for '${query}'` : ``}</h2>
+        </div>
       )}
     </div>
   );
