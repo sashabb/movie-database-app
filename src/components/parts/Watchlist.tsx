@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
-import { Movie } from "../Add";
-import ResultCard from "./ResultCard";
+import { Movie } from "./Add";
+import WatchlistCard from "./WatchlistCard";
 
 const Watchlist = () => {
   const { watchlist } = useContext(GlobalContext);
@@ -14,9 +14,9 @@ const Watchlist = () => {
       </div>
 
       {watchlist && watchlist.length > 0 && (
-        <ul>
+        <ul className={"grid"}>
           {watchlist.map((movie: Movie, i: number) => {
-            return <ResultCard key={i} result={movie} />;
+            return <WatchlistCard key={i} movie={movie} />;
           })}
         </ul>
       )}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ResultCard from "./parts/ResultCard";
+import ResultCard from "./ResultCard";
 
 export type Movie = {
   id: string;
@@ -40,7 +40,7 @@ const Add = () => {
         />
       </div>
       {results && results.length > 0 && (
-        <ul className={"results-wrapper"}>
+        <ul className={"results-wrapper grid"}>
           {results
             .sort((a, b) => b.vote_average - a.vote_average)
             .map((result: Movie, i: number) => {

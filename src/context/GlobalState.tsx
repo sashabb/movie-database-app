@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
-import { Movie } from "../components/Add";
+import { Movie } from "../components/parts/Add";
 import AppReducer from "./AppReducer";
 
 // Initial state

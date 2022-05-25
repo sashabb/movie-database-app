@@ -1,3 +1,7 @@
+# Movie Watchlist App (React + Typescript)
+
+Search for movies using 'The Movie Database' API. Save movies to a watchlist / mark as watched.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
