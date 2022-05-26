@@ -24,10 +24,11 @@ const initialState = {
 // Create context
 export const GlobalContext = createContext(initialState);
 
+type Props = {
+  children?: React.ReactNode;
+};
 // Provider components
-export const GlobalProvider = (props: any) => {
-  console.log(props, "prov props");
-
+export const GlobalProvider = (props: Props) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
