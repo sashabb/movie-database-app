@@ -5,18 +5,18 @@ import AppReducer from "./AppReducer";
 // Initial state
 const initialState = {
   watchlist: localStorage.getItem("watchlist")
-    ? JSON.parse(localStorage.getItem("watchlist") as any)
+    ? JSON.parse(localStorage.getItem("watchlist") as string)
     : [],
   watched: localStorage.getItem("watched")
-    ? JSON.parse(localStorage.getItem("watched") as any)
+    ? JSON.parse(localStorage.getItem("watched") as string)
     : [],
   favourites: localStorage.getItem("favourites")
-    ? JSON.parse(localStorage.getItem("favourites") as any)
+    ? JSON.parse(localStorage.getItem("favourites") as string)
     : [],
   addToWatchlist: (movie: Movie) => {},
-  removeFromWatchlist: (movie: Movie) => {},
+  removeFromWatchlist: (id: string) => {},
   addToWatched: (movie: Movie) => {},
-  removeFromWatched: (movie: Movie) => {},
+  removeFromWatched: (id: string) => {},
   addToFavourites: (movie: Movie) => {},
   removeFromFavourites: (id: string) => {},
 };
@@ -26,6 +26,8 @@ export const GlobalContext = createContext(initialState);
 
 // Provider components
 export const GlobalProvider = (props: any) => {
+  console.log(props, "prov props");
+
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export const GlobalProvider = (props: any) => {
     dispatch({ type: "ADD_TO_WATCHLIST", payload: movie });
   };
 
-  const removeFromWatchlist = (id: Movie) => {
+  const removeFromWatchlist = (id: string) => {
     dispatch({ type: "REMOVE_FROM_WATCHLIST", payload: id });
   };
 
@@ -47,18 +49,16 @@ export const GlobalProvider = (props: any) => {
     dispatch({ type: "ADD_TO_WATCHED", payload: movie });
   };
 
-  const removeFromWatched = (id: Movie) => {
+  const removeFromWatched = (id: string) => {
     dispatch({ type: "REMOVE_FROM_WATCHED", payload: id });
   };
 
   const addToFavourites = (movie: Movie) => {
     dispatch({ type: "ADD_TO_FAVOURITES", payload: movie });
-    console.log("addToFavourites");
   };
 
   const removeFromFavourites = (id: string) => {
     dispatch({ type: "REMOVE_FROM_FAVOURITES", payload: id });
-    console.log("removeFromFavourites");
   };
 
   return (
