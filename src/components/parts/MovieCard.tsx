@@ -1,7 +1,14 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalState";
 import { Movie } from "./Add";
+import { FavouriteIcon } from "./FavouriteIcon";
 import { MovieControls } from "./MovieControls";
 
 const MovieCard = ({ movie, type }: { movie: Movie; type: string }) => {
+  const { favourites, addToFavourites, removeFromFavourites } =
+    useContext(GlobalContext);
+  const storedFavourites = favourites.find((o: Movie) => o.id === movie.id);
+  const favourite = storedFavourites ? true : false;
   return (
     <li className={"movie-card"}>
       <div className={"watchlist-image-wrapper"}>
@@ -23,8 +30,21 @@ const MovieCard = ({ movie, type }: { movie: Movie; type: string }) => {
           </div>
           <MovieControls type={type} movie={movie} />
         </div>
-        <div className={"rating"}>
-          <p>{movie.vote_average}</p>
+        <div className={"flex-between-vertical"}>
+          <div className={"rating"}>
+            <p>{movie.vote_average}</p>
+          </div>
+          <button
+            type="button"
+            className={"favourite"}
+            onClick={() =>
+              favourite
+                ? removeFromFavourites(movie?.id)
+                : addToFavourites(movie)
+            }
+          >
+            <FavouriteIcon fill={favourite} />
+          </button>
         </div>
       </div>
     </li>

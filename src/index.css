@@ -38,6 +38,7 @@ a {
 button {
   border: 0;
   background-color: transparent;
+  cursor: pointer;
 }
 
 img {
@@ -221,6 +222,12 @@ margin-right: 6px;
   display: flex;
   align-items: center;
 }
+.flex-between-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 
 .btn {
   cursor: pointer;
@@ -230,4 +237,11 @@ margin-right: 6px;
   padding: 2px 6px;
   font-size: 10px;
   text-transform: uppercase;
+}
+
+.favourite svg path {
+  transition: fill 0.4s ease;
+  }
+.favourite.active svg path {
+fill: var(--color);
 }
